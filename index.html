@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trang Web Cá Nhân - Vinh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+      }
+      header {
+        text-align: center;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      p {
+        font-size: 18px;
+      }
+      nav {
+        margin: 20px 0;
+        text-align: center;
+      }
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #2980b9;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+
+      /* CSS cho form liên hệ */
+      form {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #2980b9;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #1c5980;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Xin chào, tôi là Vinh</h1>
+      <p>Chuyên nghiên cứu về Blockchain và Tài chính</p>
+    </header>
+
+    <nav>
+      <a href="#about">Giới thiệu</a>
+      <a href="#projects">Dự án</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+
+    <section id="about">
+      <h2>Giới thiệu</h2>
+      <p>
+        Tôi là một nhà nghiên cứu và phân tích tài chính, tập trung vào công
+        nghệ blockchain và ứng dụng của nó trong tài chính hiện đại.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Dự án</h2>
+      <ul>
+        <li>Phân tích tokenomics các dự án DeFi</li>
+        <li>Xây dựng mô hình dự đoán giá crypto dựa trên Machine Learning</li>
+        <li>Viết blog chuyên sâu về thị trường tài chính 4.0</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Liên hệ</h2>
+      <form action="https://formspree.io/f/xgvkjagy" method="POST">
+        <label for="name">Họ tên:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="_replyto" required /><br />
+
+        <label for="message">Nội dung:</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea
+        ><br />
+
+        <button type="submit">Gửi</button>
+      </form>
+    </section>
+  </body>
+</html>
