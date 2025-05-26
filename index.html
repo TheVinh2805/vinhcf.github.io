@@ -2,109 +2,784 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Trang Web Cá Nhân - Vinh</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Coffee - Bột Cà Phê Cao Cấp</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 40px;
-      }
-      header {
-        text-align: center;
-      }
-      h1 {
-        color: #2c3e50;
-      }
-      p {
-        font-size: 18px;
-      }
-      nav {
-        margin: 20px 0;
-        text-align: center;
-      }
-      nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: #2980b9;
-      }
-      nav a:hover {
-        text-decoration: underline;
-      }
-
-      /* CSS cho form liên hệ */
-      form {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-      input,
-      textarea {
-        width: 100%;
-        padding: 8px;
-        margin-top: 4px;
-        margin-bottom: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 16px;
+      * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
       }
-      button {
-        background-color: #2980b9;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 4px;
-        font-size: 16px;
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        overflow-x: hidden;
       }
-      button:hover {
-        background-color: #1c5980;
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header với hiệu ứng 3D */
+      header {
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        color: white;
+        padding: 20px 0;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+        transform-style: preserve-3d;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 70%
+        );
+        animation: shine 3s infinite;
+      }
+
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(200%);
+        }
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        transform: perspective(100px) rotateY(-10deg);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 10px 15px;
+        border-radius: 25px;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 25px;
+        transform: translateZ(-1px);
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        transform: translateY(-5px) scale(1.05);
+        text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links a:hover::before {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateZ(-1px) scale(1.1);
+      }
+
+      /* Hero Section với hiệu ứng 4D */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #faebd7 0%,
+          #f5f5dc 50%,
+          #deb887 100%
+        );
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(139, 69, 19, 0.1) 1px,
+          transparent 1px
+        );
+        background-size: 50px 50px;
+        animation: float 20s infinite linear;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50px, -50px) rotate(360deg);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        transform-style: preserve-3d;
+      }
+
+      .hero h1 {
+        font-size: 4em;
+        color: #8b4513;
+        margin-bottom: 20px;
+        text-shadow: 5px 5px 15px rgba(139, 69, 19, 0.3);
+        transform: perspective(500px) rotateX(15deg);
+        animation: heroTitle 2s ease-out;
+      }
+
+      @keyframes heroTitle {
+        0% {
+          transform: perspective(500px) rotateX(90deg) translateY(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: perspective(500px) rotateX(15deg) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .hero p {
+        font-size: 1.3em;
+        color: #a0522d;
+        margin-bottom: 40px;
+        transform: perspective(300px) rotateX(5deg);
+        animation: heroText 2s ease-out 0.5s both;
+      }
+
+      @keyframes heroText {
+        0% {
+          transform: perspective(300px) rotateX(-45deg) translateY(50px);
+          opacity: 0;
+        }
+        100% {
+          transform: perspective(300px) rotateX(5deg) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+        transform: perspective(200px) rotateX(-10deg);
+        animation: ctaButton 2s ease-out 1s both;
+      }
+
+      @keyframes ctaButton {
+        0% {
+          transform: perspective(200px) rotateX(-90deg) translateY(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: perspective(200px) rotateX(-10deg) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .cta-button:hover {
+        transform: perspective(200px) rotateX(-10deg) translateY(-10px)
+          scale(1.1);
+        box-shadow: 0 20px 40px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Products Section */
+      .products {
+        padding: 100px 0;
+        background: white;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3em;
+        color: #8b4513;
+        margin-bottom: 60px;
+        text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.2);
+        transform: perspective(400px) rotateX(20deg);
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        perspective: 1000px;
+      }
+
+      .product-card {
+        background: linear-gradient(145deg, #ffffff, #f8f8f8);
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(139, 69, 19, 0.05),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.6s;
+      }
+
+      .product-card:hover::before {
+        transform: translateX(100%);
+      }
+
+      .product-card:hover {
+        transform: rotateY(10deg) rotateX(5deg) translateY(-20px);
+        box-shadow: 0 30px 60px rgba(139, 69, 19, 0.2);
+      }
+
+      .product-icon {
+        font-size: 4em;
+        margin-bottom: 20px;
+        transform: translateZ(20px);
+      }
+
+      .product-card h3 {
+        color: #8b4513;
+        margin-bottom: 15px;
+        font-size: 1.5em;
+        transform: translateZ(10px);
+      }
+
+      .product-card p {
+        color: #666;
+        line-height: 1.6;
+        transform: translateZ(5px);
+      }
+
+      /* About Section */
+      .about {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f5f5dc 0%, #faebd7 100%);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .about-text {
+        transform-style: preserve-3d;
+      }
+
+      .about-text h2 {
+        font-size: 2.5em;
+        color: #8b4513;
+        margin-bottom: 30px;
+        transform: perspective(300px) rotateY(-10deg);
+      }
+
+      .about-text p {
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 20px;
+        transform: perspective(200px) rotateX(5deg);
+      }
+
+      .about-image {
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .coffee-animation {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        border-radius: 50%;
+        position: relative;
+        animation: coffeePulse 3s infinite ease-in-out;
+        box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
+      }
+
+      @keyframes coffeePulse {
+        0%,
+        100% {
+          transform: scale(1) rotateY(0deg);
+        }
+        50% {
+          transform: scale(1.1) rotateY(180deg);
+        }
+      }
+
+      .coffee-animation::before {
+        content: "☕";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4em;
+        animation: coffeeRotate 6s infinite linear;
+      }
+
+      @keyframes coffeeRotate {
+        0% {
+          transform: translate(-50%, -50%) rotateY(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotateY(360deg);
+        }
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 100px 0;
+        background: white;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: linear-gradient(145deg, #ffffff, #f8f8f8);
+        padding: 50px;
+        border-radius: 30px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        transform-style: preserve-3d;
+      }
+
+      .form-group {
+        margin-bottom: 30px;
+        transform-style: preserve-3d;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        color: #8b4513;
+        font-weight: bold;
+        transform: translateZ(5px);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #deb887;
+        border-radius: 15px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        background: linear-gradient(145deg, #ffffff, #fafafa);
+        transform: translateZ(2px);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #8b4513;
+        box-shadow: 0 10px 20px rgba(139, 69, 19, 0.2);
+        transform: translateZ(10px) scale(1.02);
+      }
+
+      .submit-btn {
+        width: 100%;
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        color: white;
+        padding: 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(139, 69, 19, 0.3);
+        transform: translateZ(5px);
+      }
+
+      .submit-btn:hover {
+        transform: translateZ(15px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        color: white;
+        text-align: center;
+        padding: 50px 0;
+        position: relative;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, transparent, white, transparent);
+        animation: footerShine 2s infinite;
+      }
+
+      @keyframes footerShine {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5em;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .contact-form {
+          margin: 0 20px;
+          padding: 30px;
+        }
+      }
+
+      /* Floating particles */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(139, 69, 19, 0.3);
+        border-radius: 50%;
+        animation: floatParticle 15s infinite linear;
+      }
+
+      @keyframes floatParticle {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(360deg);
+          opacity: 0;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
     <header>
-      <h1>Xin chào, tôi là Vinh</h1>
-      <p>Chuyên nghiên cứu về Blockchain và Tài chính</p>
+      <nav class="container">
+        <div class="logo">☕ PREMIUM COFFEE</div>
+        <ul class="nav-links">
+          <li><a href="#home">Trang Chủ</a></li>
+          <li><a href="#products">Sản Phẩm</a></li>
+          <li><a href="#about">Giới Thiệu</a></li>
+          <li><a href="#contact">Liên Hệ</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <nav>
-      <a href="#about">Giới thiệu</a>
-      <a href="#projects">Dự án</a>
-      <a href="#contact">Liên hệ</a>
-    </nav>
-
-    <section id="about">
-      <h2>Giới thiệu</h2>
-      <p>
-        Tôi là một nhà nghiên cứu và phân tích tài chính, tập trung vào công
-        nghệ blockchain và ứng dụng của nó trong tài chính hiện đại.
-      </p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Bột Cà Phê Cao Cấp</h1>
+          <p>
+            Hương vị đậm đà từ những hạt cà phê chọn lọc tốt nhất, mang đến trải
+            nghiệm tuyệt vời cho mọi tách cà phê
+          </p>
+          <a href="#contact" class="cta-button">Liên Hệ Ngay</a>
+        </div>
+      </div>
     </section>
 
-    <section id="projects">
-      <h2>Dự án</h2>
-      <ul>
-        <li>Phân tích tokenomics các dự án DeFi</li>
-        <li>Xây dựng mô hình dự đoán giá crypto dựa trên Machine Learning</li>
-        <li>Viết blog chuyên sâu về thị trường tài chính 4.0</li>
-      </ul>
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <h2 class="section-title">Sản Phẩm Của Chúng Tôi</h2>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-icon">☕</div>
+            <h3>Cà Phê Robusta</h3>
+            <p>
+              Hương vị mạnh mẽ, đậm đà với độ caffeine cao. Thích hợp cho những
+              ai yêu thích vị cà phê truyền thống Việt Nam.
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">🌱</div>
+            <h3>Cà Phê Arabica</h3>
+            <p>
+              Hương vị tinh tế, thanh mát với độ axit vừa phải. Được trồng trên
+              cao nguyên với chất lượng xuất khẩu.
+            </p>
+          </div>
+          <div class="product-card">
+            <div class="product-icon">✨</div>
+            <h3>Cà Phê Blend</h3>
+            <p>
+              Sự kết hợp hoàn hảo giữa Robusta và Arabica, tạo nên hương vị độc
+              đáo và cân bằng.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact">
-      <h2>Liên hệ</h2>
-      <form action="https://formspree.io/f/xgvkjagy" method="POST">
-        <label for="name">Họ tên:</label><br />
-        <input type="text" id="name" name="name" required /><br />
-
-        <label for="email">Email:</label><br />
-        <input type="email" id="email" name="_replyto" required /><br />
-
-        <label for="message">Nội dung:</label><br />
-        <textarea id="message" name="message" rows="5" required></textarea
-        ><br />
-
-        <button type="submit">Gửi</button>
-      </form>
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h2>Về Chúng Tôi</h2>
+            <p>
+              Chúng tôi là đơn vị chuyên cung cấp bột cà phê cao cấp với hơn 10
+              năm kinh nghiệm trong ngành. Sản phẩm của chúng tôi được chọn lọc
+              từ những vùng trồng cà phê nổi tiếng nhất Việt Nam.
+            </p>
+            <p>
+              Cam kết mang đến cho khách hàng những sản phẩm chất lượng cao nhất
+              với giá cả hợp lý. Chúng tôi không ngừng đổi mới và cải tiến để
+              đáp ứng nhu cầu ngày càng cao của thị trường.
+            </p>
+            <p>
+              Hãy liên hệ với chúng tôi để trải nghiệm hương vị cà phê tuyệt vời
+              nhất!
+            </p>
+          </div>
+          <div class="about-image">
+            <div class="coffee-animation"></div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Liên Hệ Với Chúng Tôi</h2>
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xgvkjagy"
+          method="POST"
+        >
+          <div class="form-group">
+            <label for="name">Họ và Tên:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Số Điện Thoại:</label>
+            <input type="tel" id="phone" name="phone" />
+          </div>
+          <div class="form-group">
+            <label for="product">Sản Phẩm Quan Tâm:</label>
+            <select
+              id="product"
+              name="product"
+              style="
+                width: 100%;
+                padding: 15px;
+                border: 2px solid #deb887;
+                border-radius: 15px;
+                font-size: 1em;
+                background: linear-gradient(145deg, #ffffff, #fafafa);
+              "
+            >
+              <option value="">Chọn sản phẩm</option>
+              <option value="robusta">Cà Phê Robusta</option>
+              <option value="arabica">Cà Phê Arabica</option>
+              <option value="blend">Cà Phê Blend</option>
+              <option value="other">Khác</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tin Nhắn:</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Nhập nội dung tin nhắn của bạn..."
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Gửi Liên Hệ</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Premium Coffee. Tất cả quyền được bảo lưu.</p>
+        <p>Chất lượng - Uy tín - Dịch vụ tốt nhất</p>
+      </div>
+    </footer>
+
+    <script>
+      // Create floating particles
+      function createParticles() {
+        const particles = document.getElementById("particles");
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 15 + "s";
+          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+          particles.appendChild(particle);
+        }
+      }
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Add parallax effect
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        const heroContent = document.querySelector(".hero-content");
+        if (heroContent) {
+          heroContent.style.transform = `translate3d(0, ${rate}px, 0)`;
+        }
+      });
+
+      // Animate elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe elements for animation
+      document
+        .querySelectorAll(".product-card, .about-text, .contact-form")
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(50px)";
+          el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(el);
+        });
+
+      // Initialize particles when page loads
+      window.addEventListener("load", createParticles);
+
+      // Form submission enhancement
+      document
+        .querySelector(".contact-form")
+        .addEventListener("submit", function (e) {
+          const submitBtn = document.querySelector(".submit-btn");
+          submitBtn.textContent = "Đang gửi...";
+          submitBtn.style.background =
+            "linear-gradient(145deg, #A0522D, #8B4513)";
+
+          setTimeout(() => {
+            submitBtn.textContent = "Gửi Liên Hệ";
+            submitBtn.style.background =
+              "linear-gradient(145deg, #8B4513, #A0522D)";
+          }, 2000);
+        });
+    </script>
   </body>
 </html>
